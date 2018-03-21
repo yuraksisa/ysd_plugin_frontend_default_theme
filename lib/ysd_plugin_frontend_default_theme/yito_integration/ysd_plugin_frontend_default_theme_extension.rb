@@ -82,7 +82,7 @@ module YsdPluginFrontendDefaultTheme
         }
 
         # template
-        template_file = File.open (File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..', 'views','rentit_page_render.erb')))
+        template_file = File.open (File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..', 'views','default_page_render.erb')))
         template = template_file.read
         page_template = Tilt.new('liquid') { template }
         page_render = page_template.render(context, theme_attributes )
