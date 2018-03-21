@@ -1,0 +1,9 @@
+require "ysd_plugin_frontend_default_theme/version"
+require "ysd_plugin_frontend_default_theme/sinatra/ysd_sinatra_frontend_default_theme"
+require "ysd_plugin_frontend_default_theme/yito_integration/ysd_plugin_frontend_default_theme_extension"
+
+require "ysd_plugin_frontend_default_theme/ysd_plugin_frontend_default_theme_init"
+
+module YsdPluginFrontendDefaultTheme
+  # Your code goes here...
+end
