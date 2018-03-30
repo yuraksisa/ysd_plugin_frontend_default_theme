@@ -2,21 +2,180 @@
  ** 12-Theme update
  **
  **/
-.page-section.breadcrumbs .page-header h1 {
-    font-size: 60px;
-    text-transform: none;
-    padding: 30px 0px;
+
+/**
+ ** HOME =======================================
+ **/
+#block_translation_form select {
+    border-radius: 3px;
+    border: none;
+    background: #535557;
+    color: white;
+}
+.home .content-area {
+    background-image: url(/default/slider/slide-1);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+.home .page-section .page-header h1 {
+    color: white;
+}
+
+.home .page-section.breadcrumbs,
+.home .booking-selector{
+    background: none !important;
+}
+
+.home .form-search {
+    margin: 0;
+    margin-top: 3rem;
+}
+
+/**
+ ** END HOME ===================================
+ **/
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    text-transform: none;
+}
+
+.line {
+    width: 100%;
+    height: 5px;
+    position: relative;
+}
+.navigation .nav.sf-menu {
+    display: table;
+    width: 100%;
+    text-align: right;
+}
+@media (max-width: 991px) {
+    .navigation .nav.sf-menu {
+        display: block;
+        text-align: left;
+    }
+}
+.sf-menu > li {
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+input,
+textarea,
+.ui-autocomplete-input,
+.uneditable-input,
+.bootstrap-select .selectpicker {
+    border-radius: 3px !important;
+}
+.bootstrap-select {
+    width: 100% !important;
+}
+.bootstrap-select .selectpicker,
+.bootstrap-select,
+.form-control {
+    border: none !important;
+    background-color: #f5f6f8 !important;
+}
+.bootstrap-select.btn-group .btn .caret {
+    right: 12px;
+    left: auto;
+}
+.btn-theme.btn-block {
+    max-width: none;
+}
+.header .header-wrapper {
+    background-color: #f7f7f7;
+}
+
+.header .header-wrapper > .container {
+    height: auto !important;
+    min-height: auto;
+}
+
+.logo {
+    width: auto;
+    background: none;
+    height: 35px;
+    margin-top: -10px;
+}
+@media(max-width: 991px) {
+    .logo {
+        height: auto;
+        margin-top: 0;
+    }
+}
+.is-sticky .logo {
+    margin-top: 0;
+    width: auto;
+}
+.company-name {
+    font-size: 2rem;
+    margin: 0 1rem;
+    display: inline-block;
+    line-height: 1;
+    padding-bottom: 1rem;
+    font-weight: bold;
+}
+.logo a {
+    display: inline;
+}
+.full-screen-map .logo img {
+    width: auto;
+}
+.is-sticky .logo img {
+    height: 35px;
+    width: auto;
+    margin-top: -10px;
+}
+.menu-toggle {
+    height: auto;
+}
+.footer {
+    padding: 3rem 0;
+}
+.footer-meta {
+    background: none;
+}
+@media (max-width: 991px) {
+    .logo img {
+        height: 35px;
+        width: auto;
+        margin-top: -10px;
+    }
+}
+
+.page-section.light {
+    background-color: white;
+}
+.page-section.breadcrumbs .page-header h1 {
+    font-size: 40px;
+    text-transform: none;
+    padding: 30px 0px;
+    font-weight: 200;
+    text-align: left;
+}
+@media (max-width: 480px) {
+    .page-section.breadcrumbs .page-header h1 {
+        font-size: 26px;
+        margin: 0;
+        padding: 16px 0;
+    }
+}
 .booking-selector {
     background-image: url(/default/slider/slide-1);
     background-repeat: no-repeat;
     background-size: cover;
 }
 .form-extras .select {
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
+.form-extras .left:after {
+    border-right: dashed 1px #d3d3d3;
+}
 .form-extras .select label {
     display: inline-block;
     vertical-align: middle;
@@ -39,7 +198,9 @@
 #reservation_error {
     margin-top: 20px;
 }
-
+.car-listing {
+    padding-bottom: 2rem;
+}
 .car-listing .thumbnail-car-card  .table td.not-available {
     font-size: 14px;
     font-weight: 400;
@@ -48,6 +209,45 @@
     padding-bottom: 15px;
     color: #e60000;
 }
+.car-listing .thumbnail-car-card .caption-title,
+.car-listing .thumbnail-car-card .caption-title-sub {
+    padding: 0;
+}
+.car-listing .thumbnail-car-card > .row,
+.car-big-card > .row {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    border: none;
+}
+.car-big-card.alt .car-details {
+    border-right: dashed 1px #ececec;
+}
+.car-big-card.alt div[class*="col-"]:last-child .car-details {
+    border-right: none;
+}
+.car-big-card.alt .car-details .price {
+    background-color: white;
+}
+@media screen and (max-width: 991px) {
+    .car-listing .thumbnail-car-card > .row,
+    .car-big-card > .row {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .car-listing .thumbnail-car-card > .row > div,
+    .car-big-card > .row > div {
+        width: 100%;
+    }
+    .car-listing .thumbnail-car-card .car-listing-selector,
+    .car-listing .car-big-card .car-listing-selector {
+        padding-right: 0;
+    }
+}
+.car-listing .thumbnail-car-card .item img {
+    margin: auto;
+}
+
 @media screen and (min-width: 992px) {
     .car-listing .thumbnail-car-card  .table td a.btn-choose-product {
         display: inline-block;
@@ -56,14 +256,8 @@
     }
 }
 
-#page_choose_product, #page_complete, #page_summary {
-    min-height: 800px;
-}
-
-.car-listing .thumbnail-car-card .table td.buttons {
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.car-listing .thumbnail-car-card .caption-text {
+    margin: 0;
 }
 .car-listing-selector {
     padding-right: 20px;
@@ -71,18 +265,47 @@
     padding-bottom: 60px;
 }
 
+.translation_language {
+    display: inline-block;
+    margin-left: 16px;
+}
+
 @media (max-width: 991px) {
     .translation_language {
         display: inline-block;
-        position: relative;
-        left: 16px;
+        margin-top: 41px;
     }
 }
 
-.translation_language {
-    display: inline-block;
-    position: relative;
-    top: 27px;
+.clearfix {
+    display: block;
+    max-width: none;
+}
+
+.row div[class*="col-"], .row aside[class*="col-"] {
+    margin-top: 0;
+}
+.block-title {
+    padding-left: 30px;
+    margin-bottom: 0;
+}
+.block-title.alt {
+    border: none;
+    background-color: #f1f1f1;
+    font-weight: 600;
+    text-transform: none;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.block-title.alt .fa {
+    border: none;
+    background: none;
+}
+
+.thumbnail .media img {
+    width: auto;
+    margin: auto;
+    display: block;
 }
 
 .is-sticky .translation_language {
@@ -92,16 +315,72 @@
 .form-search {
     background: rgba(20, 24, 28, 0.8);
 }
-
-.form-search.dark {
-    min-height: 250px;
-    margin: 100px 0px;
+.form-search .form-title .fa {
+    font-size: 23px !important;
+    margin-top: -10px;
+}
+.form-search .row-inputs .container-fluid {
+    display: flex;
+    justify-content: flex-start;
+}
+.form-search .row-submit .container-fluid > .inner {
+    padding: 15px;
+}
+.home .form-search .form-group {
+    width: 100%;
+    margin: 1rem 0.5rem;
+}
+.form-search #pickup_place.form-group {
+    min-width: 300px;
+}
+.btn-group > .btn:first-child {
+    padding-left: 3px;
 }
 
+.selected_product .row,
+#extras_container .row,
+.form-additional .row {
+    margin-top: 0;
+}
 #datepicker .ui-datepicker {
     margin: 0 auto;
     width: 100%;
 }
+.ui-datepicker {
+    border: none;
+    box-shadow: 0 0 5px rgba(20, 24, 28, 0.51);
+    border-radius: 0;
+}
+.ui-datepicker td .ui-state-active {
+    border-radius: 3px;
+}
+.ui-datepicker td .ui-state-active:hover,
+.ui-datepicker td .ui-state-hover {
+    background: black;
+    color: white;
+}
+.ui-datepicker td .ui-state-default {
+    box-shadow: none;
+}
+@media (max-width: 768px) {
+    .form-search .row-inputs .container-fluid {
+        flex-direction: column;
+    }
+    .form-search .form-group {
+        width: auto;
+    }
+}
+.dropdown-menu > li > a:hover{
+    background: black;
+    color: white;
+}
+.image-bck {
+    background-color: #f5f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /** 13 - spinner **/
 
@@ -109,35 +388,37 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0, 32, 49, 1);
+    background: #c5c5c5cc;
     z-index: 9999;
 }
 
 .s2 {
     position: absolute;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     background-color: transparent;
     top: 50vh;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 0.5;
 }
 
 .s1 {
     position: absolute;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     top: 50vh;
     left: 50%;
     transform-origin: center;
     transform: translate(-50%, -50%) rotate(45deg);
     background-color: transparent;
+    opacity: 0.2;
 }
 
 .bigcon {
     position: absolute;
-    height: 95px;
-    width: 95px;
+    height: 50px;
+    width: 50px;
     top: 50vh;
     left: 50%;
     transform-origin: center;
@@ -145,16 +426,17 @@
     background-color: transparent;
     animation: bigcon 2s infinite linear;
     animation-delay: 0.25s;
+    opacity: 0.5;
 }
 
 .loader_message {
     position: absolute;
     height: 95px;
     width: 95px;
-    top: calc(50vh - 10px);
+    top: calc(50vh + 40px);
     left: calc(50% - 30px);
     background-color: transparent;
-    color: white;
+    color: #f1f1f1;
 }
 
 .b {
@@ -163,11 +445,9 @@
 }
 
 .s {
-    width: 25px;
-    height: 25px;
-    animation: small 2s infinite ease;
-    box-shadow: 0px 2px rgba(0,0,0,0.3);
-    background-color: #46b9ff;
+    width: 10px;
+    height: 10px;
+    background-color: #049cdb;
 }
 
 .s:nth-child(1) {
@@ -191,13 +471,12 @@
 }
 
 .big {
-    width: 20px;
-    height: 20px;
-    border-radius: 15px;
-    box-shadow:0px 0px 10px #54f7f8, 0px 0px 20px #54f7f8, 0px 0px 30px #54f7f8, 0px 0px 50px #54f7f8, 0px 0px 60px #54f7f8 ;
+    width: 10px;
+    height: 10px;
     z-index: 1;
-    background-color: #54f7f8;
-    animation: bigball 1s infinite linear;
+    background-color: #049cdb;
+    box-shadow: 0px 0px 10px white;
+    z-index: 1;
 }
 
 .sb1{

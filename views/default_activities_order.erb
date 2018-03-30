@@ -1,20 +1,18 @@
 <!-- PAGE WITH SIDEBAR -->
-<section class="page-section with-sidebar sub-page">
-  <div class="container">
-
+<section class="with-sidebar sub-page">
     <div class="row">
       <div class="col-md-12">
 
-        <h2 class="text-center"><%=@order.customer_name%> <%=@order.customer_surname%>,
+        <h3><%=@order.customer_name%> <%=@order.customer_surname%>,
            <strong><%=t.front_end_activities.order_page.order_detail_title("#{t[:front_end_activities][:order_page][:order_detail_state][@order.status.to_sym]}").to_s.downcase%>
-           </strong></h2>
-
+           </strong></h3>
+        <br/>
       </div>
     </div>
 
     <div class="row">
       <!-- CONTENT -->
-      <div class="col-md-8 content" id="content">
+      <div class="col-md-8 content car-listing" id="content">
 
         <!-- PRODUCT(S) INFORMATION -->
         <h3 class="block-title alt">
@@ -50,7 +48,7 @@
                         <% end %>
                       </ul>
                     </div>
-                    <div class="price pull-right">
+                    <div class="price">
                       <strong><%='%.2f' % order_items[:total]%></strong>€ <i class="fa fa-info-circle"></i>
                     </div>
                   </div>
@@ -354,6 +352,5 @@
       </aside>
       <!-- /SIDEBAR -->
     </div>
-  </div>
 </section>
 <!-- /PAGE WITH SIDEBAR -->

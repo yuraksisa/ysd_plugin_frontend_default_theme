@@ -1,9 +1,8 @@
         <!-- PAGE WITH SIDEBAR -->
-        <section class="page-section with-sidebar sub-page">
-            <div class="container">
+        <section class="with-sidebar sub-page">
                 <div class="row">
                     <!-- CONTENT -->
-                    <div class="col-md-8 content" id="content" style="display: none">
+                    <div class="col-md-8 content car-listing" id="content" style="display: none">
                         <!-- Product -->
                         <div id="selected_product">
                         </div>
@@ -130,7 +129,6 @@
                     <!-- /SIDEBAR -->
 
                 </div>
-            </div>
         </section>
         <!-- /PAGE WITH SIDEBAR -->
 
@@ -142,10 +140,8 @@
   <div class="car-big-card alt">
     <div class="row">
       <div class="col-md-8">
-        <div>
-          <div class="item">
-            <img class="img-responsive" src="<%%=product.full_photo%>" alt=""/>
-          </div>
+        <div class="item">
+          <img class="img-responsive" src="<%%=product.full_photo%>" alt=""/>
         </div>
       </div>
       <div class="col-md-4">
@@ -176,14 +172,7 @@
   <%% for (var idx=0; idx<shopping_cart.items.length; idx++) { %>
   <div class="car-big-card alt">
     <div class="row">
-      <div class="col-md-8">
-        <div>
-          <div class="item">
-            <img class="img-responsive" src="<%%=products[shopping_cart.items[idx].item_id].full_photo%>" alt=""/>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <div class="car-details">
            <div class="list">
               <ul>
@@ -198,6 +187,11 @@
            </div>
          </div>
        </div>
+       <div class="col-md-7">
+        <div class="item">
+          <img class="img-responsive" src="<%%=products[shopping_cart.items[idx].item_id].full_photo%>" alt=""/>
+        </div>
+      </div>
      </div>
    </div>
    <%% } %>

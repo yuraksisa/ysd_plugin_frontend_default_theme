@@ -46,6 +46,8 @@ module YsdPluginFrontendDefaultTheme
       # Apply the layout
       if layout_name == 'page_render' and SystemConfiguration::Variable.get_value('frontend.skin', nil) == 'default'
 
+        home_page = SystemConfiguration::Variable.get_value('site.anonymous_front_page')
+
         # Builds the primary link menu
         primary_links_menu = Site::Menu.first(name: 'primary_links')
         primary_links_menu_render = self.build_primary_links_menu(primary_links_menu,
@@ -78,7 +80,8 @@ module YsdPluginFrontendDefaultTheme
                             'site_company_instagram' => SystemConfiguration::Variable.get_value('site.company.instagram', '.'),
                             'year' => Date.today.year,
                             'primary_links_menu' => primary_links_menu_render,
-                            'secondary_links_menu' => secondary_links_menu_render
+                            'secondary_links_menu' => secondary_links_menu_render,
+                            'home' => (context[:app].request.path_info == home_page or context[:app].request.path_info == '/')
         }
 
         # template

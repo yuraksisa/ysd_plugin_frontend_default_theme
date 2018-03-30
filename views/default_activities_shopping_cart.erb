@@ -1,9 +1,8 @@
 <!-- PAGE WITH SIDEBAR -->
-<section class="page-section with-sidebar sub-page">
-  <div class="container">
+<section class="with-sidebar sub-page">
     <div class="row">
       <!-- CONTENT -->
-      <div class="col-md-8 content" id="content">
+      <div class="col-md-8 content car-listing" id="content">
 
         <!-- Product -->
         <div id="selected_products">
@@ -101,7 +100,6 @@
       <!-- /SIDEBAR -->
 
     </div>
-  </div>
 </section>
 <!-- /PAGE WITH SIDEBAR -->
 
@@ -140,7 +138,7 @@
                 <%% } %>
               </ul>
            </div>
-           <div class="price pull-right">
+           <div class="price">
               <strong><%%=new Number(shopping_cart.shopping_cart_items_group_by_date_time_item_id[idx]['total']).toFixed(2)%></strong>€ <i class="fa fa-info-circle"></i>
            </div>
          </div>

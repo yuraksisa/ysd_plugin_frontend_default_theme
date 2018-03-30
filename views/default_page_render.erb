@@ -14,7 +14,7 @@
   <!-- CSS -->
   <link type="text/css" rel="stylesheet" href="/default/css/style-public.css">
   <link type="text/css" rel="stylesheet" href="/default/css/style-public-theme.css">
-  <!--link type="text/css" rel="stylesheet" href="/css/theme-cumin.css"-->
+  <link type="text/css" rel="stylesheet" href="/default/css/theme-green-1.css">
   <link type="text/css" rel="stylesheet" href="/default/css/style-public-theme-extension.css">
 
   <% if !page.styles_source.nil? && !page.styles_source.empty? %>
@@ -22,6 +22,7 @@
   <% end %>
 
   <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300">
+  <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:700,800,900,400,300">
   <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800">
 
@@ -42,7 +43,7 @@
 
   <![endif]-->
 </head>
-<body id="home" class="wide">
+<body id="home" class="wide{% if home %} home{% endif %}">
 
 <!-- WRAPPER -->
 <div class="wrapper">
@@ -56,8 +57,12 @@
 
         <!-- Logo -->
         <div class="logo">
-          <a href="<%=format_url_with_language('/')%>"><img src="<%=site_logo%>" alt="<%=site_title%>"/></a>
+          <a href="<%=format_url_with_language('/')%>">
+            <img src="<%=site_logo%>" alt="<%=site_title%>"/>
+            <span class="company-name text-color">{{site_company_name}}</span>
+          </a>
         </div>
+
         <!-- /Logo -->
 
         <!-- Mobile menu toggle button -->
@@ -89,20 +94,22 @@
 
 
     <!-- BREADCRUMBS -->
+    {% unless home %}
     <% unless page.title.nil? || page.title.empty? %>
       <section class="page-section breadcrumbs text-center">
         <div class="container">
           <div class="page-header">
-            <h1><%=page.title%></h1>
+            <h1 class="text-color"><%=page.title%></h1>
           </div>
         </div>
       </section>
     <% end %>
+    {% endunless %}
     <!-- /BREADCRUMBS -->
 
     <!-- PAGE : Booking selector -->
     <% if (page.variables.has_key?(:booking_selector) and not page.variables[:booking_selector].empty?) %>
-      <section class="booking-selector page-section dark">
+      <section class="booking-selector page-section light">
         <div class="container">
           <%= page.variables[:booking_selector] %>
         </div>
@@ -110,7 +117,8 @@
     <% end %>
 
     <!-- PAGE -->
-    <section class="page-section">
+    <div class="background-color line"></div>
+    <section class="page-section light">
       <div class="container">
 
         <%= partial :flash_messages %>
@@ -132,7 +140,7 @@
     <div class="footer-meta">
       <div class="container">
         <div class="row">
-          <div class="col-sm-offset-2 col-sm-4">
+          <div class="col-sm-12 col-md-10 col-md-offset-1">
             <ul class="media-list contact-list">
               <li class="media">
                 <div class="media-body"><strong>{{site_company_name}}</strong></div>

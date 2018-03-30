@@ -1,21 +1,14 @@
 <!-- PAGE WITH SIDEBAR -->
-<section class="page-section sub-page">
-  <div class="container">
-
+<section class="sub-page">
     <div id="activities">
     </div>
-
-  </div>
 </section>
 
 
 <!-- SCRIPTS -->
 
 <script type="text/tmpl" id="script_activities">
-
-        <div class="row">
           <!-- CONTENT -->
-          <div class="col-md-9 content">
 
             <%% if (activities.length > 0) { %>
             <h3 class="block-title alt"><i class="fa fa-angle-down"></i><%=t.front_end_activities.activities_title%></h3>
@@ -27,10 +20,10 @@
             <%% activity = activities[idx]; %>
               <div class="car-big-card alt">
                   <div class="row">
-                      <div class="col-md-8">
+                      <div class="col-md-7 image-bck">
                           <img class="img-responsive" src="<%%=activity.photo_url_full%>"  alt=""/>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-5">
                           <div class="car-details">
                               <div class="list">
                                   <ul>
@@ -60,10 +53,6 @@
               </div>
               <hr class="page-divider half transparent"/>
             <%% } %>
-          </div>
-        </div>
-
-
 </script>
 
 <script type="text/tmpl" id="script_activities_2">

@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300);
 @import url(http://fonts.googleapis.com/css?family=Raleway:700,800,900,400,300);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
-@import "inc/awesome-bootstrap-checkbox.css";
+/*@import "inc/awesome-bootstrap-checkbox.css";*/
 /* --------------------------------------------------------------------------
  * jThemes Studio : RENT IT - Car Rental Management Template
  *
@@ -146,7 +146,7 @@
 /* Global properties (body, common classes, structure etc)
 /* ========================================================================== */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Slab', serif;
   font-size: 15px;
   line-height: 1.6;
   background: #fbfbfb;
@@ -156,6 +156,10 @@ body {
   -webkit-backface-visibility: visible !important;
   position: relative;
   overflow-x: hidden;
+}
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 body.boxed {
   background: #fbfbfb;
@@ -374,13 +378,14 @@ a:not(.btn-theme):active,
 a:not(.btn-theme):focus {
   color: #000000;
 }
-.footer a:not(.btn-theme) {
-  color: #14181c;
+
+.footer a {
+  color: rgba(250, 250, 250, 0.5) !important;
 }
-.footer a:not(.btn-theme):hover,
-.footer a:not(.btn-theme):active,
-.footer a:not(.btn-theme):focus {
-  color: #2e9063;
+.footer a:hover,
+.footer a:active,
+.footer a:focus {
+  color: rgba(250, 250, 250, 1) !important;
 }
 p {
   margin-bottom: 20px;
@@ -578,8 +583,12 @@ ul.list-icons li > .fa {
 .text-dark {
   color: #14181c;
 }
-.text-color {
-  color: #2e9063;
+.text-color,
+.text-primary {
+  color: #2e9063 !important;
+}
+.background-color {
+  background-color: #2e9063 !important;
 }
 .drop-cap {
   display: block;
@@ -2109,8 +2118,8 @@ input[type=checkbox] {
 /* Footer
 /* ========================================================================== */
 .footer {
-  color: #14181c;
-  background-color: #f9fafb;
+  color: #ffffff;
+  background-color: #2e9063;
 }
 /* 3.1 */
 /* Footer widgets
@@ -2147,11 +2156,10 @@ input[type=checkbox] {
 /* ========================================================================== */
 .footer-meta {
   padding: 30px 0;
-  background-color: #ffffff;
 }
 .footer-meta .copyright {
   text-align: center;
-  color: #a1b1bc;
+  color: white;
 }
 /* 4.1 */
 /* Main Slider / OwlCarousel
@@ -7884,6 +7892,7 @@ input[type=checkbox] {
 .reservation-now {
   padding-top: 30px;
   border-top: solid 1px #d3d3d3;
+  padding-right: 15px;
 }
 .reservation-now .checkbox label {
   line-height: 18px;
@@ -7891,6 +7900,9 @@ input[type=checkbox] {
 }
 .reservation-now .btn + .btn {
   margin-right: 20px;
+}
+#block_translation_form select {
+  background: #2e9063 !important;
 }
 /* Error page
 /* ========================================================================== */
@@ -8259,14 +8271,14 @@ body.full-screen-map .form-search .row-submit .inner {
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
   background-color: transparent;
-  background-color: rgba(46, 144, 99, 0.5);
-  border: solid 2px #2e9063;
-  color: #ffffff;
+  border: solid 2px rgba(46, 144, 99, 0.5);
+  color: #2e9063;
+  background-color: #ffffff;
 }
 .to-top:hover {
-  background-color: #ffffff;
-  border-color: #2e9063;
-  color: #2e9063;
+  background-color: #2e9063;
+  border-color: #ffffff;
+  color: #ffffff;
 }
 /* 5.17 */
 /* 6.0 */

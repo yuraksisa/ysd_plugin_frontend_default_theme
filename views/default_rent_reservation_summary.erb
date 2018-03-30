@@ -1,16 +1,15 @@
 <!-- PAGE WITH SIDEBAR -->
-<section class="page-section with-sidebar sub-page">
-  <div class="container">
-
+<section class="with-sidebar sub-page">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="text-center"><%=@booking.customer_name%> <%=@booking.customer_surname%>, <strong><%=t.front_end_reservation.booking_detail_title("#{t[:front_end_reservation][:booking_detail_state][@booking.status.to_sym]}").to_s.downcase%></strong></h2>
+        <h3><%=@booking.customer_name%> <%=@booking.customer_surname%>, <strong><%=t.front_end_reservation.booking_detail_title("#{t[:front_end_reservation][:booking_detail_state][@booking.status.to_sym]}").to_s.downcase%></strong></h3>
+        <br/>
       </div>
     </div>
 
     <div class="row">
       <!-- CONTENT -->
-      <div class="col-md-8 content" id="content">
+      <div class="col-md-8 content car-listing" id="content">
 
         <!-- PRODUCT(S) INFORMATION -->
         <h3 class="block-title alt">
@@ -31,9 +30,9 @@
             <div class="col-md-12">
               <div class="car-details">
                 <div class="block-title">
-                  <h2 style="text-align:center"><%=booking_item.item_description_customer_translation%></h2>
+                  <h3><%=booking_item.item_description_customer_translation%></h3>
                 </div>
-                <div class="price" style="text-align:right">
+                <div class="price">
                   <%if booking_item.quantity > 1%>
                       <small><%=booking_item.quantity%> x <%='%.2f' % booking_item.item_unit_cost%>€</small> &nbsp; &nbsp;
                   <% end %>
@@ -58,9 +57,9 @@
             <div class="col-md-12">
                <div class="car-details">
                   <div class="block-title">
-                     <h2 style="text-align:center"><%=booking_extra.extra_description_customer_translation%></h2>
+                     <h4><%=booking_extra.extra_description_customer_translation%></h4>
                   </div>
-                  <div class="price" style="text-align:right">
+                  <div class="price">
                     <%if booking_extra.quantity > 1%>
                     <small><%=booking_extra.quantity%> x <%='%.2f' % booking_extra.extra_unit_cost%>€</small> &nbsp; &nbsp;
                     <% end %>
@@ -446,6 +445,5 @@
       </aside>
       <!-- /SIDEBAR -->
     </div>
-  </div>
 </section>
 <!-- /PAGE WITH SIDEBAR -->

@@ -1,6 +1,5 @@
         <!-- PAGE WITH SIDEBAR -->
-        <section id="page_choose_product" class="page-section with-sidebar sub-page">
-            <div class="container">
+        <section id="page_choose_product" class="with-sidebar sub-page">
                 <div class="row">
                     <!-- CONTENT -->
                     <div class="col-md-8 content car-listing" id="content">
@@ -10,12 +9,12 @@
                         </div>
 
                         <% if booking_item_family and booking_item_family.multiple_items? %>
-                        <br>
+                        <br/>
                         <div class="pull-right">
                           <a class="btn btn-theme btn-theme-dark" href="<%=format_url_with_language("/reserva/completar")%>"><%=t.front_end_reservation.next%></a>
                         </div>
+                        <br/>
                         <% end %>
-                        
 
                     </div>
                     <!-- /CONTENT -->
@@ -117,59 +116,62 @@
                         <!-- /widget helping center -->
                     </aside>
                     <!-- /SIDEBAR -->
-
                 </div>
-            </div>
         </section>
         <!-- /PAGE WITH SIDEBAR -->
 
         <script type="text/tpml" id="script_detailed_product">
 
             <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-               <div class="media" style="line-height:215px">
-                  <img src="<%%=product.photo%>" alt=""/>
-               </div>
-               <div class="caption">
-                  <h4 class="caption-title"><%%=product.name%></h4>
-                  <h5 class="caption-title-sub"><%%=new Number(product.price).toFixed(2)%>€</h5>
-                  <div class="caption-text">
-                    <%%=product.description%>
+            <div class="row">
+               <div class="col-md-5">
+                  <div class="caption">
+                    <h4 class="caption-title"><%%=product.name%></h4>
+                    <h5 class="caption-title-sub"><%%=new Number(product.price).toFixed(2)%>€</h5>
+                    <div class="caption-text">
+                      <%%=product.description%>
+                    </div>
+
+                    <% if booking_item_family and booking_item_family.frontend == :shopcart %>
+                        <%% if (product.availability) { %>
+                        <div class="car-listing-selector">
+                          <select class="selectpicker select-choose-product input pull-right" data-value="<%%=product.code%>" data-live-search="false"
+                data-toggle="tooltip" title="Select" data-container="body">>
+                                <%% for (var idx=0;idx<=(product.stock-product.busy);idx++) { %>
+                                <option value="<%%=idx%>"
+                                <%% if (productsInShoppingCart[product.code] && productsInShoppingCart[product.code] == idx) { %>
+                                selected="selected"
+                                <%%}%>><%%=idx%> (<%%=new Number(product.price * idx).toFixed(2)%> €)</option>
+                                <%% } %>
+                            </select>
+                          </div>
+                        <%% } else { %>
+                          <table class="table">
+                            <tr>
+                               <td class="not-available"><%=t.front_end_reservation.not_available%></td>
+                            </tr>
+                          </table>
+                        <%% } %>
+                    <% else %>
+                      <table class="table">
+                         <tr>
+                           <%% if (product.availability) { %>
+                           <td class="buttons">
+                              <a class="btn btn-theme btn-choose-product" href="#" data-product="<%%=product.code%>"><%=t.front_end_reservation.select%></a>
+                           </td>
+                           <%% } else { %>
+                           <td class="not-available"><%=t.front_end_reservation.not_available%></td>
+                           <%% } %>
+                         </tr>
+                      </table>
+                    <% end %>
                   </div>
-
-                  <% if booking_item_family and booking_item_family.frontend == :shopcart %>
-                      <%% if (product.availability) { %>
-                      <div class="car-listing-selector">
-                        <select class="selectpicker select-choose-product input pull-right" data-value="<%%=product.code%>" data-live-search="false"
-              data-toggle="tooltip" title="Select" data-container="body">>
-                              <%% for (var idx=0;idx<=(product.stock-product.busy);idx++) { %>
-                              <option value="<%%=idx%>"
-                              <%% if (productsInShoppingCart[product.code] && productsInShoppingCart[product.code] == idx) { %>
-                              selected="selected"
-                              <%%}%>><%%=idx%> (<%%=new Number(product.price * idx).toFixed(2)%> €)</option>
-                              <%% } %>
-                          </select>
-                        </div>
-                      <%% } else { %>
-                        <table class="table">
-                          <tr>
-                             <td class="not-available"><%=t.front_end_reservation.not_available%></td>
-                          </tr>
-                        </table>
-                      <%% } %>
-                  <% else %>
-                    <table class="table">
-                       <tr>
-                         <%% if (product.availability) { %>
-                         <td class="buttons">
-                            <a class="btn btn-theme btn-choose-product" href="#" data-product="<%%=product.code%>"><%=t.front_end_reservation.select%></a>
-                         </td>
-                         <%% } else { %>
-                         <td class="not-available"><%=t.front_end_reservation.not_available%></td>
-                         <%% } %>
-                       </tr>
-                    </table>
-                  <% end %>
                 </div>
-              </div>
-
+                <div class="col-md-7">
+                 <div class="media">
+                    <img src="<%%=product.full_photo%>" alt=""/>
+                 </div>
+               </div>
+               </div>
+            </div>
         </script>
