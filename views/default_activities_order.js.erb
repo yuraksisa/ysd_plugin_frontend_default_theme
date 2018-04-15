@@ -11,8 +11,8 @@ require(['jquery', 'YSDRemoteDataSource','YSDSelectSelector',
             pay: function(payment, paymentMethodId) {
                 // Submit the form to start the payment
                 $.form('/reserva-actividades/pagar',{ id: model.orderId,
-                                                      payment: payment,
-                                                      payment_method_id: paymentMethodId}, 'POST').submit();
+                    payment: payment,
+                    payment_method_id: paymentMethodId}, 'POST').submit();
             },
             update: function() {
 
@@ -23,7 +23,9 @@ require(['jquery', 'YSDRemoteDataSource','YSDSelectSelector',
                 for (item in order_item_customers) {
                     order['order_item_customers'].push(order_item_customers[item]);
                 }
-
+                if (model.requestLanguage != null) {
+                    url += '?lang='+model.requestLanguage;
+                }
                 var orderJSON = encodeURIComponent(JSON.stringify(order));
 
                 var url = '/api/booking-activities/frontend/order/' + this.orderId;
@@ -52,15 +54,15 @@ require(['jquery', 'YSDRemoteDataSource','YSDSelectSelector',
                     alert('Debe indicar forma de pago');
                 }
                 else {
-                  <% if @order.can_pay_deposit? %>
-                  var payment = 'deposit';
-                  <% elsif @order.can_pay_pending? %>
-                  var payment = 'pending';
-                  <% elsif @order.can_pay_total? %>
-                  var payment = 'total';
-                  <% end %>
-                  var paymentMethodId = $('#accordion a').not('.collapsed').attr('data-payment-method');
-                  model.pay(payment, paymentMethodId);
+                    <% if @order.can_pay_deposit? %>
+                    var payment = 'deposit';
+                    <% elsif @order.can_pay_pending? %>
+                    var payment = 'pending';
+                    <% elsif @order.can_pay_total? %>
+                    var payment = 'total';
+                    <% end %>
+                    var paymentMethodId = $('#accordion a').not('.collapsed').attr('data-payment-method');
+                    model.pay(payment, paymentMethodId);
                 }
             },
             btnUpdateClick: function() {
