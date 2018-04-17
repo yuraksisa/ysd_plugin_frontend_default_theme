@@ -34,8 +34,15 @@ module YsdPluginFrontendDefaultTheme
     #
     # Return the front end skin
     #
-    def frontend_skin
+    def frontend_skin(context={})
       ['default']
+    end
+
+    #
+    # Configure if the theme uses custom js
+    #
+    def frontend_skin_custom_js(context={})
+      false
     end
 
     #
