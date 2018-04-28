@@ -321,7 +321,7 @@
 <!-- Script payment -->
 <script type="text/tmpl" id="script_payment_detail">
   <h3 class="block-title alt"><i class="fa"></i><%=t.front_end_reservation.payment_title%></h3>
-  <%% if (sales_process.can_pay) { %>
+  <%% if (sales_process.can_pay_deposit) { %>
   <div class="alert alert-success">
     <p><%=t.front_end_reservation.payment_to_confirm_reservation(@deposit)%></p>
   </div>
@@ -337,7 +337,7 @@
       </div>
       <div id="collapse2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2"></div>
     </div>
-    <%% if (sales_process.can_pay) { %>
+    <%% if (sales_process.can_pay_deposit || sales_process.can_pay_total) { %>
     <% if @payment_methods.tpv_virtual %>
     <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingThree">
