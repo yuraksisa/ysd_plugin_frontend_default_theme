@@ -275,6 +275,11 @@ textarea,
     margin-left: 16px;
 }
 
+.shopping_cart {
+    display: inline-block;
+    margin-left: 16px;
+}
+
 @media (max-width: 991px) {
     .translation_language {
         display: inline-block;

@@ -55,15 +55,34 @@ module YsdPluginFrontendDefaultTheme
 
         home_page = SystemConfiguration::Variable.get_value('site.anonymous_front_page')
 
+        primary_secondary_links_menu = context[:app].primary_secondary_links_menu?
+
         # Builds the primary link menu
-        primary_links_menu = Site::Menu.first(name: 'primary_links')
+        primary_links_menu = if primary_secondary_links_menu
+                               Site::Menu.first(name: 'primary_links')
+                             else
+                               Site::Menu.first(name: 'primary_links_activities')
+                             end
+
+        # Check if show shopping cart
+        renting_plan, activities_plan = context[:app].mybooking_plan
+        only_activities = (activities_plan and !renting_plan)
+        full_own_menu = (activities_plan and renting_plan and SystemConfiguration::Variable.get_value('booking.frontend.activities_menu','false').to_bool)
+        show_shopping_cart = ((only_activities or (full_own_menu and !primary_secondary_links_menu)) and !context[:app].activities_summaries_pages?)
+
         primary_links_menu_render = self.build_primary_links_menu(primary_links_menu,
                                                                   context[:app].request.path_info,
                                                                   context[:app].session[:locale],
                                                                   context[:app].settings.default_locale,
-                                                                  context[:app].settings.multilanguage_site)
+                                                                  context[:app].settings.multilanguage_site,
+                                                                  show_shopping_cart)
         # Builds the secondary links menu
-        secondary_links_menu = Site::Menu.first(name: 'secondary_links')
+        secondary_links_menu = if primary_secondary_links_menu
+                                 Site::Menu.first(name: 'secondary_links')
+                               else
+                                 Site::Menu.first(name: 'secondary_links_activities')
+                               end
+
         secondary_links_menu_render = self.build_secondary_links_menu(secondary_links_menu,
                                                                       context[:app].request.path_info,
                                                                       context[:app].session[:locale],
@@ -108,7 +127,7 @@ module YsdPluginFrontendDefaultTheme
     #
     # Build a menu for a locale
     #
-    def build_primary_links_menu(menu, request_path, locale, default_locale, multilanguage_site)
+    def build_primary_links_menu(menu, request_path, locale, default_locale, multilanguage_site, shopping_cart)
 
       start_menu    = "<ul class=\"nav sf-menu\">"
       start_submenu = "<li class=\"\"><a href=\"<%=branch[:link_route]%>\" title=\"branch[:description]\" class=\"sf-with-ul\"><%=branch[:title]%></a><ul>"
@@ -117,7 +136,10 @@ module YsdPluginFrontendDefaultTheme
       end_submenu   = "</ul></li>"
       end_menu      = "</ul>"
       separator     = "&nbsp;"
-      extra_end_menu = "<% if (page.variables.has_key?(:languages_translation) and not page.variables[:languages_translation].empty?) %><div class=\"translation_language\"> <%= page.variables[:languages_translation]%></div><% end %>"
+      extra_end_menu = "<% if (page.variables.has_key?(:languages_translation) and not page.variables[:languages_translation].empty?) %><li><div class=\"translation_language\"> <%= page.variables[:languages_translation]%></div></li><% end %>"
+      if shopping_cart
+        extra_end_menu << "<% if (page.variables.has_key?(:shopping_cart) and not page.variables[:shopping_cart].empty?)%><li><div class=\"shopping_cart\"><%=page.variables[:shopping_cart]%></div></li><% end %>"
+      end
 
       menu_adapter = Adapters::MenuAdapter.new(menu, locale, default_locale, multilanguage_site)
 
