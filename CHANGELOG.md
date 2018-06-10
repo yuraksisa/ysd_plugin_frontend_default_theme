@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.11] - 2018-06-10
+### Updated
+- Payment: deposit - total - deposit and total
+
 ## [0.1.10] - 2018-05-29
 ### Updated
 - Translations

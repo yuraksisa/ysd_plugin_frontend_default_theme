@@ -334,7 +334,7 @@
 <!-- Script payment -->
 <script type="text/tmpl" id="script_payment_detail">
   <h3 class="block-title alt"><i class="fa"></i><%=t.front_end_reservation.payment_title%></h3>
-  <%% if (sales_process.can_pay_deposit) { %>
+  <%% if (sales_process.can_pay_deposit && !sales_process.can_pay_total) { %>
   <div class="alert alert-success">
     <p><%=t.front_end_reservation.payment_to_confirm_reservation(@deposit)%></p>
   </div>
@@ -359,11 +359,11 @@
                       <span class="dot"></span> <%=t.front_end_reservation.credit_card_payment%>
                   </a>
           <span class="overflowed pull-right">
-              <!--img src="assets/img/preview/payments/mastercard-2.jpg" alt=""/>
-              <img src="assets/img/preview/payments/visa-2.jpg" alt=""/>
-              <img src="assets/img/preview/payments/american-express-2.jpg" alt=""/>
-              <img src="assets/img/preview/payments/discovery-2.jpg" alt=""/>
-              <img src="assets/img/preview/payments/eheck-2.jpg" alt=""/-->
+              <img src="/default/img/preview/payments/mastercard-2.jpg" alt=""/>
+              <img src="/default/img/preview/payments/visa-2.jpg" alt=""/>
+              <!--img src="/default/img/preview/payments/american-express-2.jpg" alt=""/>
+              <img src="/default/img/preview/payments/discovery-2.jpg" alt=""/>
+              <img src="/default/img/preview/payments/eheck-2.jpg" alt=""/-->
           </span>
               </h4>
           </div>
@@ -378,7 +378,7 @@
                       <span class="dot"></span> <%=t.front_end_reservation.paypal_payment%>
                   </a>
                   <span class="overflowed pull-right">
-                     <!--img src="assets/img/preview/payments/paypal-2.jpg" alt=""/-->
+                     <img src="/default/img/preview/payments/paypal-2.jpg" alt="">
                   </span>
               </h4>
           </div>
@@ -387,6 +387,24 @@
     <% end %>
     <%% } %>
   </div>
+
+  <div id="payment_amount_container" style="display: none">
+    <h4><%=t.front_end_reservation.payment_amount%></h4>
+    <br>
+    <form id="payment_amount_form" class="form-additional">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+            <input type="radio" value="deposit" name="payment"/> <label><%=t.front_end_reservation.payment_amount_deposit%> (<%=@deposit%> %)</label>
+            </div>
+            <div class="form-group">
+            <input type="radio" value="total" name="payment">  <label><%=t.front_end_reservation.payment_amount_total%></label>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
 </script> 
 
 
