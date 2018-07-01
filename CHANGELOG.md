@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.12] - 2018-07-01
+### Updated
+- Preview images
+
 ## [0.1.11] - 2018-06-10
 ### Updated
 - Payment: deposit - total - deposit and total
