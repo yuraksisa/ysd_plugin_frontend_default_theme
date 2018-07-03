@@ -24,7 +24,8 @@ requirejs.config({
         "datejs"                  : "datejs",
         "ysdtemplate"             : "ysdtemplate",
         "async"                   : "async",
-        "jquery.toast"            : "jquery.toast"
+        "jquery.toast"            : "jquery.toast",
+        "select2"                 : "select2"
     },
 
     shim: {
@@ -43,6 +44,7 @@ requirejs.config({
         "jquery.smoothscroll" : ['jquery'],
         "jquery.toast": ['jquery'],
         "swiper.jquery": ['jquery'],
+        "select2" : ['jquery'],
         "bootstrap.select": ['bootstrap'],
         "json2" : { 
           "exports": 'JSON'
