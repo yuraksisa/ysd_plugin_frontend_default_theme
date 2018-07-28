@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.14] - 2018-07-28
+### Added
+- Modal for product / extras detail
+### Updated
+- Dates literals depending on business
+
+## [0.1.13] - 2018-07-03
+### Updated
+- select2 integration
+
 ## [0.1.12] - 2018-07-01
 ### Updated
 - Preview images
