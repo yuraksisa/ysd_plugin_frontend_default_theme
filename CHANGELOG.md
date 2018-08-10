@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.15] - 2018-08-10
+### Updated
+- Available attribute in product search taking into account stock_control
+
 ## [0.1.14] - 2018-07-28
 ### Added
 - Modal for product / extras detail
