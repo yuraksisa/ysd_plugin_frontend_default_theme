@@ -301,17 +301,13 @@
         <!-- PAYMENT -->
         <% if (@order.can_pay_deposit? or @order.can_pay_pending? or @order.can_pay_total?) and (@payment_methods.tpv_virtual or @payment_methods.paypal)%>
           <h3 class="block-title alt"><i class="fa fa-angle-down"></i><%=t.front_end_activities.order_page.payment_group.title%></h3>
-          <% if @order.can_pay_deposit? %>
+          <% if @order.can_pay_deposit? and !@order.can_pay_total? %>
             <div class="alert alert-success">
               <p><%=t.front_end_activities.order_page.payment_group.deposit_title(@deposit, "(%.2f #{@currency})" % @order.reservation_amount)%></p>
             </div>
           <% elsif @order.can_pay_pending? %>
-            <div class="alert alert-success">
+            <div class="alert alert-warning">
               <p><%=t.front_end_activities.order_page.payment_group.pending_title("(%.2f #{@currency})" % @order.total_pending)%></p>
-            </div>
-          <% elsif @order.can_pay_total? %>
-            <div class="alert alert-success">
-              <p><%=t.front_end_activities.order_page.payment_group.total_title%></p>
             </div>
           <% end %>
           <div class="panel-group payments-options" id="accordion" role="tablist" aria-multiselectable="true">
@@ -341,6 +337,26 @@
                   </h4>
                 </div>
                 <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4"></div>
+              </div>
+            <% end %>
+
+            <% if @order.can_pay_deposit? and @order.can_pay_total? %>
+              <div id="payment_amount_container" <%if @payment_methods.paypal and @payment_methods.tpv_virtual%>style="display:none"<%end%>>
+                <br>
+                <h4><%=t.front_end_reservation.payment_amount%></h4>
+                <br>
+                <form id="payment_amount_form" class="form-additional">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="radio" value="deposit" name="payment"/> <label><%=t.front_end_reservation.payment_amount_deposit%> (<%=@deposit%> %)</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="radio" value="total" name="payment">  <label><%=t.front_end_reservation.payment_amount_total%></label>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
             <% end %>
 

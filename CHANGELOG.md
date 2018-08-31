@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.16] - 2018-08-31
+### Updated
+- Activities payment management: Manage deposit - pending - total
+- Renting payment management: Show pending payment message
+
 ## [0.1.15] - 2018-08-10
 ### Updated
 - Available attribute in product search taking into account stock_control
