@@ -21,16 +21,28 @@ define(function() {
     this.removeEventListener = function(type, listener) { /* Removes an event listener */
   	
       if (this.listeners[type] instanceof Array) {
-    	
-        this.listeners[type].slice(this.listeners[type].indexOf(listener),1);
-    	
-        if (this.listeners[type].length == 0) {
-          delete this.listeners[type];	
-        }	
-    	
+      
+        if (this.listeners[type].indexOf(listener) > -1) {
+          //console.log('remove index ' + this.listeners[type].indexOf(listener));
+          this.listeners[type].splice(this.listeners[type].indexOf(listener),1);
+      
+          if (this.listeners[type].length == 0) {
+            delete this.listeners[type];  
+          } 
+        }
+      
       }
    	
     };
+
+    this.removeEventListeners = function(type) { /* Remove all event listeners */
+
+      if (this.listeners[type] instanceof Array) {
+        this.listeners[type] = [];
+        delete this.listeners[type];
+      }
+
+    };    
   
     this.fireEvent = function(event) { /* Fire an event */
   
